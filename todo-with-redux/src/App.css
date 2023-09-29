@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+
+.todoLabel {
+
+}
+
+.todoLabel input{
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 0;
+  height: 20px;
+}
+
+.todoLabel button{
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 0;
+  height: 24px;
+  cursor: pointer;
+}
+
+.todoList{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.todoList span:last-child{
+  color: red;
+  cursor: pointer;
+}
+
+.todoList input:checked + span {
+  text-decoration: line-through;
+}

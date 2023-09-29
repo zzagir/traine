@@ -1,0 +1,43 @@
+import { useEffect, useState } from "react";
+import { initialState } from "../useReducer/useReducerTest";
+
+export const useLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const jsonValue = localStorage.getItem(key);
+    if (jsonValue !== null) return JSON.parse(jsonValue);
+
+    return initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  });
+
+  return [value, setValue];
+};
+
+function UseLocalStorageTest() {
+  const [todos, setTodos] = useLocalStorage("todos", initialState);
+  console.log(todos);
+
+  return (
+    <div>
+      <h1>TODO useLocalStorage</h1>
+      <button
+        onClick={() =>
+          setTodos(
+            todos.map((t, i) => {
+              if (i === 1) t.isCompleted = true;
+
+              return t;
+            })
+          )
+        }
+      >
+        Change value
+      </button>
+    </div>
+  );
+}
+
+export default UseLocalStorageTest;
